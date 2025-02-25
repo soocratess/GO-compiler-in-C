@@ -1,0 +1,4 @@
+#ifndef GESTORERRORES_H
+#define GESTORERRORES_H
+
+#endif //GESTORERRORES_H
