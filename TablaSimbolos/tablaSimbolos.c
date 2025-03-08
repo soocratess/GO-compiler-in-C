@@ -1,6 +1,6 @@
 // Biblioteca creadas
 #include "tablaSimbolos.h"
-#include "../definiciones.h"
+#include "definiciones.h"
 
 
 // Biblioteca estándar
@@ -8,10 +8,11 @@
 
 #define TAMANHO_INICIAL 64 // Añadimos espacio extra para minimizar cantidad de redimensiones
 
+hashTable tabla = NULL;
 // --------------------- INTERACCIÓN CON LA TABLA SÍMBOLOS --------------------- //
 
 // Crear la tabla de símbolos
-int inicializarTS(hashTable *tabla) {
+int crearTablaSimbolos(){
 
     // Palabras reservadas (keywords) del lenguaje
     char *keywords[TAMANHO_INICIAL] = {
@@ -24,49 +25,41 @@ int inicializarTS(hashTable *tabla) {
     };
 
     // Inicializamos la tabla de hash
-    if (inicializarHashTable(tabla, TAMANHO_INICIAL) == -1) {
+    if (crearHashTable(&tabla, TAMANHO_INICIAL) == -1) {
         printf("Error al inicializar la tabla de hash\n");
         return -1;
     }
 
     // Insertamos las palabras reservadas en la tabla de hash
     for (int i = 0; keywords[i] != NULL; i++) {
-        if (insertarToken(tabla, keywords[i], i + 300) == -1) {
+        if (insertarToken(&tabla, keywords[i], i + 300) == -1) {
             printf("Error al insertar el token %s en la tabla de hash\n", keywords[i]);
         }
     }
+    return 0;
 }
 
 // Destruir la tabla de símbolos
-int destruirTS(hashTable *tabla){
-    eliminarHashTable(tabla);
+int destruirTablaSimbolos(){
+    return destruirHashTable(&tabla);
 }
 
 // Imprimir la tabla de símbolos
-void imprimirTS(hashTable tabla){
+void imprimirTablaSimbolos(){
     imprimirHashTable(tabla);
 }
 
 // --------------------- INTERACCIÓN CON ELEMENTOS DE LA TABLA --------------------- //
 
-// Insertar elemento en la tabla
-int insertarElemento(token t, hashTable *tabla){
-    return insertarToken(tabla, t.lexema, t.identificador);
-}
-
-// Modificar elemento en la tabla
-int modificarElemento(token t, hashTable tabla){
-    return modificarToken(&tabla, t.lexema, t.identificador);
-}
-
 // Buscar elemento en la tabla
-int buscarElemento(char *lexema, hashTable tabla){
-    return buscarToken(tabla, lexema);
-}
+int buscarElemento(char *lexema){
+    int busqueda = buscarToken(tabla, lexema);
 
-// Borrar elemento en la tabla
-int borrarElemento(char *lexema, hashTable *tabla){
-    return eliminarToken(tabla, lexema);
+    if (busqueda == -1) {
+        insertarToken(&tabla, lexema,ID);
+        return ID;
+    }
+    return busqueda;
 }
 
 

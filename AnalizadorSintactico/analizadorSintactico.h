@@ -7,6 +7,6 @@
 // #include "../AnalizadorLexico/AnalizadorLexico.h"
 // #include "../SistemaEntrada/sistemaEntrada.h"
 
-void iniciarAnalisis(hashTable *tabla, FILE *ficheroEntrada);
+void iniciarAnalisis();
 
 #endif // ANALIZADORSINTACTICO_H

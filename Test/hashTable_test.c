@@ -8,26 +8,26 @@
 
 void test_inicializarHashTable() {
     hashTable tabla;
-    int resultado = inicializarHashTable(&tabla, 10);
+    int resultado = crearHashTable(&tabla, 10);
     assert(resultado == EXITO);  // Verifica que la inicialización fue exitosa
     assert(tamanhoHashTable(tabla) == 10);
-    eliminarHashTable(&tabla);
+    destruirHashTable(&tabla);
 }
 
 void test_insertarToken() {
     hashTable tabla;
-    inicializarHashTable(&tabla, 10);
+    crearHashTable(&tabla, 10);
 
     int resultado = insertarToken(&tabla, "test", 100);
     assert(resultado == EXITO);
     assert(buscarToken(tabla, "test") == 100);
 
-    eliminarHashTable(&tabla);
+    destruirHashTable(&tabla);
 }
 
 void test_buscarToken() {
     hashTable tabla;
-    inicializarHashTable(&tabla, 10);
+    crearHashTable(&tabla, 10);
 
     insertarToken(&tabla, "clave1", 200);
     insertarToken(&tabla, "clave2", 300);
@@ -36,12 +36,12 @@ void test_buscarToken() {
     assert(buscarToken(tabla, "clave2") == 300);
     assert(buscarToken(tabla, "no_existe") == ERROR_GENERAL);  // Debe devolver 0 si no está
 
-    eliminarHashTable(&tabla);
+    destruirHashTable(&tabla);
 }
 
 void test_modificarToken() {
     hashTable tabla;
-    inicializarHashTable(&tabla, 10);
+    crearHashTable(&tabla, 10);
 
     insertarToken(&tabla, "modificar", 400);
     assert(buscarToken(tabla, "modificar") == 400);
@@ -49,12 +49,12 @@ void test_modificarToken() {
     modificarToken(&tabla, "modificar", 500);
     assert(buscarToken(tabla, "modificar") == 500);
 
-    eliminarHashTable(&tabla);
+    destruirHashTable(&tabla);
 }
 
 void test_eliminarToken() {
     hashTable tabla;
-    inicializarHashTable(&tabla, 10);
+    crearHashTable(&tabla, 10);
 
     insertarToken(&tabla, "borrar", 600);
     assert(buscarToken(tabla, "borrar") == 600);
@@ -62,12 +62,12 @@ void test_eliminarToken() {
     eliminarToken(&tabla, "borrar");
     assert(buscarToken(tabla, "borrar") == ERROR_GENERAL);
 
-    eliminarHashTable(&tabla);
+    destruirHashTable(&tabla);
 }
 
 void test_cantidadElementos() {
     hashTable tabla;
-    inicializarHashTable(&tabla, 10);
+    crearHashTable(&tabla, 10);
 
     assert(cantidadElementosHashTable(tabla) == 0);
 
@@ -77,12 +77,12 @@ void test_cantidadElementos() {
 
     assert(cantidadElementosHashTable(tabla) == 3);
 
-    eliminarHashTable(&tabla);
+    destruirHashTable(&tabla);
 }
 
 void test_imprimirHashTable() {
     hashTable tabla;
-    inicializarHashTable(&tabla, 5);
+    crearHashTable(&tabla, 5);
 
     insertarToken(&tabla, "test1", 1);
     insertarToken(&tabla, "test2", 2);
@@ -91,7 +91,7 @@ void test_imprimirHashTable() {
     printf("\nTabla Hash después de insertar elementos:\n");
     imprimirHashTable(tabla);
 
-    eliminarHashTable(&tabla);
+    destruirHashTable(&tabla);
 }
 
 int main() {

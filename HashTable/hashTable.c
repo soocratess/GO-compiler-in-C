@@ -2,7 +2,7 @@
 
 // --------------------- CONSTANTES Y VARIABLES --------------------- //
 
-#define primoFuncionHash 53 // Número primo para distribuir mejor los valores
+#define primoFuncionHash 33 // Número primo recomendado
 
 #define ERROR_GENERAL -1
 #define EXITO 0
@@ -12,22 +12,25 @@ int TAMANHO_TABLA;
 int NUMERO_ELEMENTOS;
 
 // --------------------- FUNCIONES PRIVADAS --------------------- //
+unsigned int hash(char *string) {
+    if (!string) return 0;  // Manejo de NULL
 
-unsigned int hash(char *string){
-    unsigned int hash = 0;
+    unsigned int hash = 5381;  // Mejor valor inicial (DJB2)
 
-    // Multiplicación y un XOR para mejorar la dispersión en la tabla mezclando bits
-    for (int i = 0; i < strlen(string); i++){
-        hash = (hash * primoFuncionHash) ^ string[i];
+    // Guardar la longitud antes del bucle para evitar múltiples llamadas a strlen()
+    size_t len = strlen(string);
+    for (size_t i = 0; i < len; i++) {
+        hash = (hash * primoFuncionHash) ^ string[i];  // Multiplicación + XOR
     }
 
-    return hash % TAMANHO_TABLA;
+    return hash % TAMANHO_TABLA;  // Ajuste al tamaño de la tabla hash
 }
+
 
 // --------------------- FUNCIONES PÚBLICAS --------------------- //
 
 // Inicialización de la tabla de hash con tamaño dinámico.
-int inicializarHashTable(hashTable *tabla, int size){
+int crearHashTable(hashTable *tabla, int size){
 
     *tabla = (token **) malloc (sizeof(token*) * size);
 
@@ -42,12 +45,14 @@ int inicializarHashTable(hashTable *tabla, int size){
 
     TAMANHO_TABLA = size;
     NUMERO_ELEMENTOS = 0;
- 
+
     return EXITO;
 }
 
+
+
 // Libera los recursos asociados con la tabla de hash.
-int eliminarHashTable(hashTable *tabla){
+int destruirHashTable(hashTable *tabla){
 
     if(*tabla == NULL){
         printf("ERROR: La tabla no existe\n");
@@ -96,7 +101,7 @@ int ajustarTamanhoHashTable(hashTable *tabla, int newSize) {
 
     // Paso 2: Rehashear e insertar cada token de la tabla antigua en la nueva tabla
 
-    int oldSize = TAMANHO_TABLA; 
+    int oldSize = TAMANHO_TABLA;
     TAMANHO_TABLA = newSize;
 
     for (int i = 0; i < oldSize; i++) {
@@ -134,16 +139,16 @@ void imprimirHashTable(hashTable tabla) {
 
 
     for (int index = 0; index < TAMANHO_TABLA; index++) {
-        printf("%d\t", index); 
+        printf("%d\t", index);
         if (tabla[index] == NULL) {
             printf("---\n"); // Indica que no hay token en esta posición
         }
-        
+
         else {
             // Recorre la lista enlazada en esta posición de la tabla
             token *actual = tabla[index];
             while (actual != NULL) {
-                printf("( %s | %d ) -> ", actual->lexema, actual->identificador); 
+                printf("( %s | %d ) -> ", actual->lexema, actual->identificador);
                 actual = actual->next;
             }
             printf("\n");
@@ -166,8 +171,8 @@ int insertarToken(hashTable *tabla, char *lexema, int identificador){
 
     // Implementamos el encadenamiento en tablas hash (mas eficiente) debido a las restricciones
     // del sistema
-    nuevoToken->lexema = strdup(lexema); 
-    nuevoToken->identificador = identificador; 
+    nuevoToken->lexema = strdup(lexema);
+    nuevoToken->identificador = identificador;
     nuevoToken->next = NULL;
 
     // Si hay colisión, insertamos el nuevo token al principio de la lista enlazada
@@ -194,11 +199,11 @@ int buscarToken(hashTable tabla, char *lexema) {
     int index = hash(lexema);
 
     token *actual = tabla[index];
-    
+
     // Recorremos la lista enlazada en la posición de la tabla
     while (actual != NULL) {
         if (strcmp(actual->lexema, lexema) == 0) {
-            return actual->identificador; 
+            return actual->identificador;
         }
 
         actual = actual->next;
@@ -213,7 +218,7 @@ int eliminarToken(hashTable *tabla, char *lexema) {
     int index = hash(lexema);
 
     token *actual = (*tabla)[index];
-    token *anterior = NULL; 
+    token *anterior = NULL;
 
     while (actual != NULL) {
         if (strcmp(actual->lexema, lexema) == 0) {
@@ -224,7 +229,7 @@ int eliminarToken(hashTable *tabla, char *lexema) {
             }
 
             free(actual->lexema);
-            free(actual); 
+            free(actual);
 
             return ERROR_GENERAL;
         }

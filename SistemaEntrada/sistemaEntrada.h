@@ -14,7 +14,7 @@ void crearSistemaEntrada(char *rutaFichero);
 
 /**
  * @brief Libera la memoria y recursos asociados al sistema de entrada.
- *
+ *f
  * Cierra el archivo si es necesario y destruye la estructura donde
  * se almacenaban los datos de buffer. Tras llamar a esta función,
  * no se debe volver a invocar funciones de lectura o acceso al buffer.
@@ -38,7 +38,7 @@ char siguienteCaracter();
  * Esta función permite que el analizador léxico "devuelva" un carácter
  * cuando, al leerlo, concluye que no forma parte del lexema en curso.
  */
-void retrocederCaracter();
+void retrocederCaracter(); // Devolver es más eficiente????
 
 /**
  * @brief Construye y devuelve el lexema actual leído desde el último "inicio" hasta el "delantero".

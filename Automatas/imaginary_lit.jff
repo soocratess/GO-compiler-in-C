@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 7.1.--><structure>
+	<type>fa</type>
+	<automaton>
+		<!--The list of states.-->
+		<state id="0" name="q0">
+			<x>120.0</x>
+			<y>393.0</y>
+			<initial/>
+		</state>
+		<state id="1" name="q1">
+			<x>251.0</x>
+			<y>335.0</y>
+		</state>
+		<state id="2" name="q2">
+			<x>264.0</x>
+			<y>156.0</y>
+		</state>
+		<state id="3" name="q3">
+			<x>288.0</x>
+			<y>388.0</y>
+		</state>
+		<state id="4" name="q4">
+			<x>291.0</x>
+			<y>668.0</y>
+		</state>
+		<state id="5" name="q5">
+			<x>531.0</x>
+			<y>380.0</y>
+		</state>
+		<!--The list of transitions.-->
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>decimal_digit</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>2</to>
+			<read>decimal_digit</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>5</to>
+			<read>i</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>3</to>
+			<read>int_lit</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>1</to>
+			<read>_</read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>5</to>
+			<read>i</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>5</to>
+			<read>i</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>4</to>
+			<read>float_lit</read>
+		</transition>
+		<note>
+			<text>letter        = unicode_letter | "_" .
+decimal_digit = "0" … "9" .
+binary_digit  = "0" | "1" .
+octal_digit   = "0" … "7" .
+hex_digit     = "0" … "9" | "A" … "F" | "a" … "f" .</text>
+			<x>664.0</x>
+			<y>248.0</y>
+		</note>
+		<note>
+			<text>¡¡¡OJO!!!
+Estas dos flechas son
+otros autómatas a los
+que hay que añadir la
+posibilidad de leer "i". 
+No es exactamente un
+autómata independiente</text>
+			<x>240.0</x>
+			<y>420.0</y>
+		</note>
+		<note>
+			<text/>
+			<x>656.0</x>
+			<y>167.0</y>
+		</note>
+	</automaton>
+</structure>

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "../definiciones.h"
+#include "definiciones.h"
 #include "../TablaSimbolos/tablaSimbolos.h"
 #include "../HashTable/hashTable.h"
 

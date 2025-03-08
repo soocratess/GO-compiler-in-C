@@ -3,29 +3,29 @@
 
 // Palabras clave de Go (asignadas desde 300 en adelante)
 #define BREAK        300
-#define DEFAULT      301
-#define FUNC         302
-#define INTERFACE    303
-#define SELECT       304
-#define CASE         305
+#define CASE         301
+#define CHAN         302
+#define CONST        303
+#define CONTINUE     304
+#define DEFAULT      305
 #define DEFER        306
-#define GO           307
-#define MAP          308
-#define STRUCT       309
-#define CHAN         310
-#define ELSE         311
+#define ELSE         307
+#define FALLTHROUGH  308
+#define FOR          309
+#define FUNC         310
+#define GO           311
 #define GOTO         312
-#define PACKAGE      313
-#define SWITCH       314
-#define CONST        315
-#define FALLTHROUGH  316
-#define IF           317
+#define IF           313
+#define IMPORT       314
+#define INTERFACE    315
+#define MAP          316
+#define PACKAGE      317
 #define RANGE        318
-#define TYPE         319
-#define CONTINUE     320
-#define FOR          321
-#define IMPORT       322
-#define RETURN       323
+#define RETURN       319
+#define SELECT       320
+#define STRUCT       321
+#define SWITCH       322
+#define TYPE         323
 #define VAR          324
 
 // Otros tokens léxicos
@@ -35,6 +35,6 @@
 #define OPERADOR     328  // Operadores (+, -, *, /, etc.)
 #define DELIMITADOR  329  // Delimitadores como {}, (), [], ;
 #define COMENTARIO   330  // Comentarios (// y /* ... */)
-#define FIN          331  // Fin del archivo
+#define FIN          EOF  // Fin del archivo
 
 #endif // DEFINICIONES_H

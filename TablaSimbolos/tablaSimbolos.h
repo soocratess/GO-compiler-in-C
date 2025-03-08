@@ -8,27 +8,18 @@
 // --------------------- INTERACCIÓN CON LA TABLA SÍMBOLOS --------------------- //
 
 // Crear la tabla de símbolos
-int inicializarTS(hashTable *tabla);
+int crearTablaSimbolos();
 
 // Destruir la tabla de símbolos
-int destruirTS(hashTable *tabla);
+int destruirTablaSimbolos();
 
 // Imprimir la tabla de símbolos
-void imprimirTS(hashTable tabla);
+void imprimirTablaSimbolos();
 
 // --------------------- INTERACCIÓN CON ELEMENTOS DE LA TABLA --------------------- //
 
-// Insertar elemento en la tabla
-int insertarElemento(token t, hashTable *tabla);
-
-// Modificar elemento en la tabla
-int modificarElemento(token t, hashTable tabla);
-
 // Buscar elemento en la tabla
-int buscarElemento(char *lexema, hashTable tabla);
-
-// Borrar elemento en la tabla
-int borrarElemento(char *lexema, hashTable *tabla);
+int buscarElemento(char *lexema);
 
 
 #endif //TABLA_SIMBOLOS_H

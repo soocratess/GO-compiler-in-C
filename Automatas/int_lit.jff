@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 7.1.--><structure>
+	<type>fa</type>
+	<automaton>
+		<!--The list of states.-->
+		<state id="0" name="q0">
+			<x>120.0</x>
+			<y>386.0</y>
+			<initial/>
+		</state>
+		<state id="1" name="q1">
+			<x>170.0</x>
+			<y>217.0</y>
+			<final/>
+		</state>
+		<state id="2" name="q2">
+			<x>290.0</x>
+			<y>230.0</y>
+			<final/>
+		</state>
+		<state id="3" name="q3">
+			<x>497.0</x>
+			<y>227.0</y>
+		</state>
+		<state id="4" name="q4">
+			<x>289.0</x>
+			<y>408.0</y>
+		</state>
+		<state id="5" name="q5">
+			<x>362.0</x>
+			<y>317.0</y>
+		</state>
+		<state id="6" name="q6">
+			<x>518.0</x>
+			<y>408.0</y>
+			<final/>
+		</state>
+		<state id="7" name="q7">
+			<x>254.0</x>
+			<y>22.0</y>
+		</state>
+		<state id="8" name="q8">
+			<x>374.0</x>
+			<y>-43.0</y>
+		</state>
+		<state id="9" name="q9">
+			<x>521.0</x>
+			<y>26.0</y>
+			<final/>
+		</state>
+		<state id="10" name="q10">
+			<x>286.0</x>
+			<y>546.0</y>
+		</state>
+		<state id="11" name="q11">
+			<x>386.0</x>
+			<y>477.0</y>
+		</state>
+		<state id="12" name="q12">
+			<x>498.0</x>
+			<y>557.0</y>
+			<final/>
+		</state>
+		<!--The list of transitions.-->
+		<transition>
+			<from>6</from>
+			<to>5</to>
+			<read>_</read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>6</to>
+			<read>binary_digit</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>8</to>
+			<read>_</read>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>6</to>
+			<read>binary_digit</read>
+		</transition>
+		<transition>
+			<from>8</from>
+			<to>9</to>
+			<read>octal_digit</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>7</to>
+			<read>o</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>4</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>2</to>
+			<controlx>159</controlx>
+			<controly>344</controly>
+			<read>1..9</read>
+		</transition>
+		<transition>
+			<from>12</from>
+			<to>12</to>
+			<read>hex_digit</read>
+		</transition>
+		<transition>
+			<from>10</from>
+			<to>11</to>
+			<read>_</read>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>6</to>
+			<read>binary_digit</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>0</read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>5</to>
+			<read>_</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>9</to>
+			<read>octal_digit</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>10</to>
+			<read>X</read>
+		</transition>
+		<transition>
+			<from>10</from>
+			<to>12</to>
+			<read>hex_digit</read>
+		</transition>
+		<transition>
+			<from>12</from>
+			<to>11</to>
+			<read>_</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>3</to>
+			<read>_</read>
+		</transition>
+		<transition>
+			<from>7</from>
+			<to>8</to>
+			<read>_</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>2</to>
+			<read>decimal digit </read>
+		</transition>
+		<transition>
+			<from>11</from>
+			<to>12</to>
+			<read>hex_digit</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>7</to>
+			<read>O</read>
+		</transition>
+		<transition>
+			<from>9</from>
+			<to>9</to>
+			<read>octal_digit</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>4</to>
+			<read>B</read>
+		</transition>
+		<transition>
+			<from>9</from>
+			<to>8</to>
+			<read>_</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>2</to>
+			<read>decimal_digit</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>10</to>
+			<read>x</read>
+		</transition>
+		<transition>
+			<from>7</from>
+			<to>9</to>
+			<read>octal_digit</read>
+		</transition>
+		<note>
+			<text>decinal_lit</text>
+			<x>549.0</x>
+			<y>284.0</y>
+		</note>
+		<note>
+			<text>letter        = unicode_letter | "_" .
+decimal_digit = "0" … "9" .
+binary_digit  = "0" | "1" .
+octal_digit   = "0" … "7" .
+hex_digit     = "0" … "9" | "A" … "F" | "a" … "f" .</text>
+			<x>630.0</x>
+			<y>268.0</y>
+		</note>
+		<note>
+			<text>binary_lit</text>
+			<x>571.0</x>
+			<y>466.0</y>
+		</note>
+		<note>
+			<text>octal_digit</text>
+			<x>557.0</x>
+			<y>71.0</y>
+		</note>
+		<note>
+			<text>hex_lit</text>
+			<x>564.0</x>
+			<y>620.0</y>
+		</note>
+	</automaton>
+</structure>

@@ -22,10 +22,10 @@ typedef token **hashTable;
 // --------------------- FUNCIONES --------------------- //
 
 // Inicialización de la tabla de hash con tamaño dinámico.
-int inicializarHashTable(hashTable *tabla, int tamanho);
+int crearHashTable(hashTable *tabla, int tamanho);
 
 // Libera los recursos asociados con la tabla de hash.
-int eliminarHashTable(hashTable *tabla);
+int destruirHashTable(hashTable *tabla);
 
 // Función hash para calcular el índice de un lexema en la tabla.
 int ajustarTamanhoHashTable(hashTable *tabla, int tamanho);
